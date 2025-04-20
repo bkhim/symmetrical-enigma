@@ -1,0 +1,9 @@
+<!-- student-detail.component.html -->
+<div *ngIf="student">
+  <h2>{{ student.firstName }} {{ student.lastName }} Details</h2>
+  <div><strong>ID:</strong> {{ student.studentId }}</div>
+  <div><strong>Date of Birth:</strong> {{ student.dob | date }}</div>
+  <div><strong>Class:</strong> {{ student.className }}</div>
+  <div><strong>Score:</strong> {{ student.score }}</div>
+  <div><strong>Status:</strong> {{ student.status ? 'Active' : 'Inactive' }}</div>
+</div>

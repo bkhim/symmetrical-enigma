@@ -1,0 +1,59 @@
+<div class="container">
+  <h2>Edit Student</h2>
+
+  <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+      <mat-form-field appearance="fill" class="form-column">
+        <mat-label>Student ID</mat-label>
+        <input matInput formControlName="studentId" [readonly]="true" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="form-column">
+        <mat-label>First Name</mat-label>
+        <input matInput formControlName="firstName" required />
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="fill" class="form-column">
+        <mat-label>Last Name</mat-label>
+        <input matInput formControlName="lastName" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="form-column">
+        <mat-label>Date of Birth</mat-label>
+        <input matInput formControlName="dob" [matDatepicker]="picker" required />
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="fill" class="form-column">
+        <mat-label>Class</mat-label>
+        <input matInput formControlName="className" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="form-column">
+        <mat-label>Score</mat-label>
+        <input matInput formControlName="score" type="number" min="0" max="100" required />
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-checkbox formControlName="status" class="form-column">Active</mat-checkbox>
+    </div>
+
+    <div class="form-row">
+      <div class="file-upload form-column">
+        <label for="photo">Upload Photo</label>
+        <input type="file" id="photo" (change)="onFileChange($event)" />
+
+        <div *ngIf="photoUrl" class="image-preview">
+          <img [src]="photoUrl" alt="Uploaded Photo" />
+        </div>
+      </div>
+    </div>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="studentForm.invalid">Update Student</button>
+  </form>
+</div>

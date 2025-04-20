@@ -1,0 +1,27 @@
+<mat-card class="processing-card">
+  <mat-card-header>
+    <mat-card-title>Process Student Data</mat-card-title>
+    <mat-card-subtitle>Convert Excel to CSV with score adjustment</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <p>This will:</p>
+    <ul>
+      <li>Find the latest generated Excel file</li>
+      <li>Add 10 points to each student's score</li>
+      <li>Save as a new CSV file</li>
+    </ul>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="processData()"
+      [disabled]="isLoading"
+    >
+      <span *ngIf="!isLoading">Process Data</span>
+      <mat-spinner *ngIf="isLoading" diameter="24"></mat-spinner>
+    </button>
+  </mat-card-actions>
+</mat-card>

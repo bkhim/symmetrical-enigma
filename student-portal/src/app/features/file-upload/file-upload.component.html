@@ -1,0 +1,33 @@
+<div class="container">
+  <h2>Upload Student Data</h2>
+
+  <div class="upload-card">
+    <input
+      type="file"
+      id="fileInput"
+      accept=".xlsx, .xls"
+      (change)="onFileSelected($event)"
+      #fileInput
+    >
+
+    <div class="file-selector">
+      <button mat-flat-button color="primary" (click)="fileInput.click()">
+        <mat-icon>attach_file</mat-icon>
+        Choose Excel File
+      </button>
+      <span class="file-name" *ngIf="selectedFile">
+        {{ selectedFile.name }}
+      </span>
+    </div>
+
+    <button
+      mat-raised-button
+      color="accent"
+      (click)="uploadFile()"
+      [disabled]="!selectedFile || isUploading"
+    >
+      <span *ngIf="!isUploading">Upload</span>
+      <mat-spinner *ngIf="isUploading" diameter="20"></mat-spinner>
+    </button>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+<mat-card class="generation-card">
+  <mat-card-header>
+    <mat-card-title>Generate Student Data</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Number of Records</mat-label>
+      <input
+        matInput
+        type="number"
+        [formControl]="recordCount"
+        min="0"
+        max="10000000"
+      >
+      <mat-error *ngIf="recordCount.hasError('required')">
+        Record count is required
+      </mat-error>
+      <mat-error *ngIf="recordCount.hasError('min')">
+        Minimum value is 0
+      </mat-error>
+      <mat-error *ngIf="recordCount.hasError('max')">
+        Maximum value is 10,000,000
+      </mat-error>
+    </mat-form-field>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="generateData()"
+      [disabled]="recordCount.invalid || isLoading"
+    >
+      <span *ngIf="!isLoading">Generate Data</span>
+      <mat-spinner *ngIf="isLoading" diameter="24"></mat-spinner>
+    </button>
+  </mat-card-actions>
+</mat-card>
